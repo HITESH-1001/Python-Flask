@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles2.css') }}"
+		/>
+		<video
+			id="myVideo"
+			src="https://v4.cdnpk.net/videvo_files/video/free/video0485/small_watermarked/_import_61a856c2bf2692.91352019_FPpreview.mp4"
+			loop
+			muted
+			autoplay
+		></video>
+
+		<title>Weather App</title>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Weather Forecast</h1>
+			<form id="weatherForm" action="/weather" method="POST">
+				<div class="input1">
+					<input
+						type="text"
+						id="city"
+						name="city"
+						placeholder="Enter the city"
+					/>
+				</div>
+				<div class="cbx">
+					<label for="use_location">Use My Location:</label>
+					<input
+						type="checkbox"
+						id="use_location"
+						name="use_location"
+						onclick="getLocation()"
+					/>
+				</div>
+				<input type="hidden" id="lat" name="lat" />
+				<input type="hidden" id="lon" name="lon" />
+				<br />
+				<div class="btn">
+					<button type="submit">Get Weather</button>
+				</div>
+			</form>
+		</div>
+
+		<script>
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition)
+				} else {
+					alert("Geolocation is not supported by this browser.")
+				}
+			}
+
+			function showPosition(position) {
+				document.getElementById("lat").value = position.coords.latitude
+				document.getElementById("lon").value = position.coords.longitude
+			}
+		</script>
+	</body>
+</html>

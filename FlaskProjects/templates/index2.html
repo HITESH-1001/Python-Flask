@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles2.css') }}"
+		/>
+		<video
+			id="myVideo"
+			src="https://v4.cdnpk.net/videvo_files/video/free/video0485/small_watermarked/_import_61a856c2bf2692.91352019_FPpreview.mp4"
+			loop
+			muted
+			autoplay
+		></video>
+		<title>Weather Details</title>
+	</head>
+	<body>
+		<div class="container">
+			<h2>
+				Weather Details for {{ weather_data['name'] }}, {{
+				weather_data['sys']['country'] }}
+			</h2>
+			<p>Temperature: {{ weather_data['main']['temp'] }}&deg;K</p>
+			<p>Humidity: {{ weather_data['main']['humidity'] }}%</p>
+			<p>Weather: {{ weather_data['weather'][0]['description'] }}</p>
+			<a href="/">Go Back</a>
+		</div>
+	</body>
+</html>
